@@ -366,18 +366,17 @@ est_compare <- tibble(
 ```
 
 ```{r}
-ggplot(est_compare, aes(x=LinearModel, y=ComBat)) +
+png("Guzek_problem5a.png", width = 1500, height = 500)
+lmcb <- ggplot(est_compare, aes(x=LinearModel, y=ComBat)) +
      geom_point(col = "darkgrey", alpha = .5, size = .5) + geom_abline(intercept = 0, slope = 1, col="darkorange") + geom_smooth(method = "lm")
-```
 
-```{r}
-ggplot(est_compare, aes(x=LinearModel, y=SVA)) +
+lmsva <- ggplot(est_compare, aes(x=LinearModel, y=SVA)) +
      geom_point(col = "darkgrey", alpha = .5, size = .5) + geom_abline(intercept = 0, slope = 1, col="darkorange") + geom_smooth(method = "lm")
-```
 
-```{r}
-ggplot(est_compare, aes(x=ComBat, y=SVA)) +
+cbsva <- ggplot(est_compare, aes(x=ComBat, y=SVA)) +
      geom_point(col = "darkgrey", alpha = .5, size = .5) + geom_abline(intercept = 0, slope = 1, col="darkorange") + geom_smooth(method = "lm")
+figure <- ggarrange(lmcb, lmsva, cbsva, c("Linear Model vs. ComBat", "Linear Model vs. SVA", "ComBat vs. SVA"), nrow = 1, ncol =3)
+annotate_figure(figure, top = text_grob("Scatter plots of coefficients"))
 ```
 
 ```{r}
