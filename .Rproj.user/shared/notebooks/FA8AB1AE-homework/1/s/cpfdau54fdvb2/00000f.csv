@@ -1,2 +1,0 @@
-"0","batch.plot <- ggplot(sva.batch) + geom_point(aes(x = SV1, y = SV2, col = batch))"
-"0","batch.plot"

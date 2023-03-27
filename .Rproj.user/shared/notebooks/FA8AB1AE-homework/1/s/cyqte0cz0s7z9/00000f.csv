@@ -1,7 +1,0 @@
-"0","p_vals <- tibble("
-"0","  LinearModel = tidy_mod %>% filter(term == ""as.factor(bottomly_metadata$strain)DBA/2J"") %>% select(""p.value"") %>% unlist,"
-"0","  ComBat = tidy_mod_combat %>% filter(term == ""as.factor(bottomly_metadata$strain)DBA/2J"") %>% select(""p.value"") %>% unlist,"
-"0","  SVA = tidy_mod_sva %>% filter(term == ""as.factor(bottomly_metadata$strain)DBA/2J"") %>% select(""p.value"") %>% unlist)"
-"0",""
-"0","p_vals.gather <- gather(p_vals)"
-"0","ggplot(p_vals.gather, aes(x = value)) + geom_histogram(fill = ""darkorange"") + facet_wrap(~key)"

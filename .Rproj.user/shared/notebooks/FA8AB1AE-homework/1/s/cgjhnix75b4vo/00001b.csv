@@ -1,4 +1,0 @@
-"0","data(bladderdata)"
-"0","phenotypes <- pData(bladderEset)"
-"0","expression_data <- exprs(bladderEset)"
-"0","phenotypes"

@@ -1,3 +1,0 @@
-"0","mod = lm(t(bottomly_edata) ~ as.factor(bottomly_metadata$strain) + as.factor(bottomly_metadata$experiment.number))"
-"0","tidy_mod <- tidy(mod)"
-"0","tidy_mod"

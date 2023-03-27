@@ -1,5 +1,0 @@
-"0","png(""Guzek_problem4a.png"", width = 800, height = 700)"
-"0","coeff = ggplot(tidy_mod %>% filter(term == ""as.factor(bottomly_metadata$strain)DBA/2J"")) + geom_histogram(aes(x=estimate), bins = 100, fill = ""darkorange"")"
-"0","p_val = ggplot(tidy_mod %>% filter(term == ""as.factor(bottomly_metadata$strain)DBA/2J"")) + geom_histogram(aes(x=p.value), bins = 100, fill=""darkorange"")"
-"0","figure <- ggarrange(coeff, p_val, labels = c(""Histogram of coefficients of uncorrected data"", ""Histogram of p-values of uncorrected data""), ncol = 1, nrow = 2) + labs(title = ""Guzek_problem4a"")"
-"0","annotate_figure(figure, top = text_grob(""Guzek_problem4a""))"
