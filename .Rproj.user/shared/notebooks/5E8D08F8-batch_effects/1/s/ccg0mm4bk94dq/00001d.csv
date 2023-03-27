@@ -1,0 +1,3 @@
+"0",""
+"0","# how about the p-values?"
+"0","ggplot(mod_tidy %>% filter(term == ""as.factor(pheno$cancer)Cancer"")) + geom_histogram(aes(x=p.value), bins = 100, fill=""darkorange"")"

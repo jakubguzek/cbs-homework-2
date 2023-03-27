@@ -1,0 +1,4 @@
+"0","theme_set(theme_bw())"
+"0","theme_update(plot.title = element_text(hjust = 0.5))"
+"0","my_colors = colorRampPalette(c(""violet"", ""white"", ""darkorange""))(n=599)"
+"0","my_colors_2 = colorRampPalette(rev(brewer.pal(11, ""RdYlBu"")))(n=29)"

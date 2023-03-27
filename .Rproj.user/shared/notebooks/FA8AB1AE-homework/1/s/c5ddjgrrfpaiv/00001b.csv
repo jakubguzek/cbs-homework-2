@@ -1,0 +1,5 @@
+"0","expression_data <- expression_data[row.variances < 5, ]"
+"0","expression_data <- log2(expression_data)"
+"0","row.variances <- apply(expression_data, 1, function(x) var(x))"
+"0","row.means <- apply(expression_data, 1, function(x) mean(x))"
+"0","ggplot(data.frame(row.means, row.variances), aes(x=row.means, y = row.variances)) + geom_point() + geom_smooth(method=""lm"", col = ""lightcoral"") + labs(title = ""Mean vs. Variance relationship"") "

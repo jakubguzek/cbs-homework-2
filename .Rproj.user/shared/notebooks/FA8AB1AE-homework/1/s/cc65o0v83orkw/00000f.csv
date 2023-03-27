@@ -1,0 +1,4 @@
+"0","est_compare <- tibble("
+"0","  LinearModel = tidy_mod %>% filter(term == ""as.factor(bottomly_metadata$strain)DBA/2J"") %>% select(""estimate"") %>% unlist,"
+"0","  ComBat = tidy_mod_combat %>% filter(term == ""as.factor(bottomly_metadata$strain)DBA/2J"") %>% select(""estimate"") %>% unlist,"
+"0","  SVA = tidy_mod_sva %>% filter(term == ""as.factor(bottomly_metadata$strain)DBA/2J"") %>% select(""estimate"") %>% unlist)"

@@ -1,0 +1,5 @@
+"0","edata <- t(scale(t(edata), scale=FALSE, center=TRUE))"
+"0","svd.out <- svd(edata)"
+"0",""
+"0","PC = data.table(svd.out$v,pData(bottomly.eset))"
+"0","ggplot(PC) + geom_point(aes(x=V1, y=V2, col=as.factor(strain)))"

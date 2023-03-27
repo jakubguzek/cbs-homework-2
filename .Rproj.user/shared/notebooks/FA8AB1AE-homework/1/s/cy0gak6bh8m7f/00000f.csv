@@ -1,0 +1,5 @@
+"0","sva.batch <- tibble(SV1 = sva.output$sv[,1],"
+"0","                  SV2 = sva.output$sv[,2],"
+"0","                  batch = as.factor(bottomly_metadata$experiment.number),"
+"0","                  strain = as.factor(bottomly_metadata$strain),"
+"0","                  lane = as.factor(bottomly_metadata$lane.number))"

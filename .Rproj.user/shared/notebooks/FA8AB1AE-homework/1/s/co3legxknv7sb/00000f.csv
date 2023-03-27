@@ -1,0 +1,3 @@
+"0","mod_combat <- lm(t(combat_bottomly_edata) ~ as.factor(bottomly_metadata$strain))"
+"0","tidy_mod_combat <- tidy(mod_combat)"
+"0","tidy_mod_combat"

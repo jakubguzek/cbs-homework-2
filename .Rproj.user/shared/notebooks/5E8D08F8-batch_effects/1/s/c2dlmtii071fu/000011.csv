@@ -1,0 +1,11 @@
+"0","library(sva)"
+"0","batch = pheno$batch"
+"0","combat_edata = ComBat(dat=edata, batch=pheno$batch, mod=model.matrix(~1, data=pheno), par.prior=TRUE, prior.plots=TRUE)"
+"2","Found5batches
+"
+"2","Adjusting for0covariate(s) or covariate level(s)
+"
+"2","Standardizing Data across genes
+"
+"2","Fitting L/S model and finding priors
+"

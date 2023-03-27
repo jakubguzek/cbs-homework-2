@@ -1,0 +1,2 @@
+"0","strain.plot <- ggplot(sva.batch) + geom_point(aes(x = SV1, y = SV2, col = strain))"
+"0","strain.plot"

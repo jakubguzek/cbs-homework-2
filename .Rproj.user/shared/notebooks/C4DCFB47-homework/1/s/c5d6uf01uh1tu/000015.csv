@@ -1,0 +1,1 @@
+"0","plot(svd.out$u[, 2], pch = 20)"

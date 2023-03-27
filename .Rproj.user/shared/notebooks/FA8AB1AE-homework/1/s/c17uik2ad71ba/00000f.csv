@@ -1,0 +1,2 @@
+"0","lane.plot <- ggplot(sva.batch) + geom_point(aes(x = SV1, y = SV2, col = lane))"
+"0","lane.plot"

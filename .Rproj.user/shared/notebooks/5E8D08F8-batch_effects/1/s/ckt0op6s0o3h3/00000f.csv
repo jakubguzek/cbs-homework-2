@@ -1,0 +1,8 @@
+"0","edata.scaled <- t(scale(t(edata.log), scale=TRUE, center=TRUE))"
+"0","edata.centered <- t(scale(t(edata.log), scale=FALSE, center=TRUE))"
+"0",""
+"0","svd.centered.out <- svd(edata.centered)"
+"0","svd.centered.plot <- data.table(svd.centered.out$v[,1:10], pheno)"
+"0",""
+"0","svd.scaled.out <- svd(edata.scaled)"
+"0","svd.scaled.plot <- data.table(svd.scaled.out$v[,1:10], pheno)"

@@ -1,0 +1,5 @@
+"0",""
+"0","sumna <- apply(edata, 1, function(x) sum(is.na(x)))"
+"0","row.variances <- apply(edata, 1, function(x) var(x))"
+"0","row.means <- apply(edata, 1, function(x) mean(x))"
+"0","plot(row.variances, row.means, pch=19, main=""Mean vs. Variance relationship"")"

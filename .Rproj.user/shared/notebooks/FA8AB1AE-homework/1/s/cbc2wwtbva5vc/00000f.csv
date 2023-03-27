@@ -1,0 +1,3 @@
+"0","# Add the surrogate variables to the model matrix"
+"0","mod_sva = lm(t(bottomly_edata) ~ as.factor(bottomly_metadata$strain) + sva.output$sv)"
+"0","tidy_mod_sva <- tidy(mod_sva)"

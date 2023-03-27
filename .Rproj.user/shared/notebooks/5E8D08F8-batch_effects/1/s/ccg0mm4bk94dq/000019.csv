@@ -1,0 +1,4 @@
+"0",""
+"0","# however, the previous line of code make a histogram of all coefficients."
+"0","# what we need to do is to find estimates of particular regression terms."
+"0","mod_tidy %>% filter(term == ""as.factor(pheno$cancer)Cancer"")"

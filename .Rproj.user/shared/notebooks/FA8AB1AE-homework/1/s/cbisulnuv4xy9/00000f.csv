@@ -1,0 +1,6 @@
+"0","sva.batch <- tibble(SV1 = sva.output$sv[,1],"
+"0","                    SV2 = sva.output$sv[,2],"
+"0","                    batch = as.factor(bottomly_metadata$experiment.number))"
+"0","sva.batch.gather <- gather(sva.batch, ""sv"", ""value"", -batch)"
+"0",""
+"0","ggplot(sva.batch.gather) + geom_violin(aes(x = batch, y = value)) + facet_wrap(~sv, ncol = 1) + geom_jitter(aes(x = batch, y = value, col = batch))"

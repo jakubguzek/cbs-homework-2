@@ -1,0 +1,8 @@
+"0","if (file_test(""-f"", ""./bottomly.Rdata"")) {"
+"0","  load(file = ""./bottomly.Rdata"")"
+"0","} else {"
+"0","  con <- url(""http://bowtie-bio.sourceforge.net/recount/ExpressionSets/bottomly_eset.RData"")"
+"0","  load(file = con)"
+"0","  close(con)"
+"0","  save(bottomly.eset, file = ""bottomly.Rdata"")"
+"0","}"

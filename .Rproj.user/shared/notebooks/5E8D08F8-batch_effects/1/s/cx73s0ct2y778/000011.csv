@@ -1,0 +1,6 @@
+"0",""
+"0","# different way of looking at coefficients from many different models"
+"0","# the vertical line indicates the zero coefficient."
+"0","ggplot(modcombat_tidy, aes(estimate, term)) +"
+"0","     geom_point() +"
+"0","     geom_vline(xintercept = 0)"

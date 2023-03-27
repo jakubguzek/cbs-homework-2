@@ -1,0 +1,2 @@
+"0","set.seed(1)"
+"0","tsne_output <- Rtsne(expression_data, pca = FALSE, preplexity = 60)"

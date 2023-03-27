@@ -1,0 +1,14 @@
+"0","batch <- phenotypes$batch"
+"0","combat_expression_data <- ComBat(dat = expression_data,"
+"0","                                 batch = batch, "
+"0","                                 mod = model.matrix(~1, data = phenotypes),"
+"0","                                 par.prior = TRUE,"
+"0","                                 prior.plots = TRUE)"
+"2","Found5batches
+"
+"2","Adjusting for0covariate(s) or covariate level(s)
+"
+"2","Standardizing Data across genes
+"
+"2","Fitting L/S model and finding priors
+"

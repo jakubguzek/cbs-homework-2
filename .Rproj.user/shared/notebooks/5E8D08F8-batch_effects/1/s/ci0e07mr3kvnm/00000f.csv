@@ -1,0 +1,7 @@
+"0","pvalues <- tibble("
+"0","  LinearModel = mod_tidy %>% filter(term == ""as.factor(pheno$cancer)Cancer"") %>% select(""p.value"") %>% unlist,"
+"0","  ComBat = modcombat_tidy %>% filter(term == ""as.factor(pheno$cancer)Cancer"") %>% select(""p.value"") %>% unlist,"
+"0","  SVA = modsva_tidy %>% filter(term == ""as.factor(pheno$cancer)Cancer"") %>% select(""p.value"") %>% unlist)"
+"0",""
+"0","pvalues_gather <- gather(pvalues)"
+"0","ggplot(pvalues_gather, aes(x=value)) + geom_histogram() + facet_wrap(~key)"

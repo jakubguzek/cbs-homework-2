@@ -1,0 +1,11 @@
+"0","mod = model.matrix(~as.factor(cancer),data=pheno)"
+"0","mod0 = model.matrix(~1, data=pheno)"
+"0","sva_output = sva(edata, mod, mod0, n.sv=num.sv(edata,mod,method=""leek""))"
+"1","Number of significant surrogate variables is:  2 
+"
+"1","Iteration (out of 5 ):"
+"1","1  "
+"1","2  "
+"1","3  "
+"1","4  "
+"1","5  "

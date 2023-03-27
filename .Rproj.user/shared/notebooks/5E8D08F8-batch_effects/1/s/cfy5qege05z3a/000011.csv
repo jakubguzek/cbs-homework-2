@@ -1,0 +1,8 @@
+"0","sva_batch <- tibble(SV1=sva_output$sv[,1],"
+"0","                  SV2=sva_output$sv[,2],"
+"0","                  #SV3=sva_output$sv[,3],"
+"0","                  #SV4=sva_output$sv[,4],"
+"0","                  batch=as.factor(pheno$batch))"
+"0","sva_batch_gather <- gather(sva_batch,""sv"",""value"",-batch)"
+"0",""
+"0","ggplot(sva_batch_gather) + geom_violin(aes(x=batch,y=value)) + facet_wrap(~ sv, ncol = 1)"
