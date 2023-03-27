@@ -2,7 +2,7 @@
 title: "homework"
 author: "Jakub Guzek"
 date: "2023-03-26"
-output: pdf_document
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -86,7 +86,7 @@ bottom_border(batch.table)[1, 1:ncol(batch.table)] <- 0.5
 batch.table <- set_background_color(batch.table, evens, everywhere, "gray95")
 batch.table <- set_bold(batch.table, row = 1, col = everywhere)
 batch.table <- set_bold(batch.table, col = 1, row = everywhere)
-quick_pdf(batch.table, file = "Guzek_problem1.pdf") 
+#quick_pdf(batch.table, file = "Guzek_problem1.pdf") 
 print_screen(batch.table, file = "Guzek_problem1.pdf") 
 ```
 
@@ -288,6 +288,7 @@ est_compare <- tibble(
 png("Guzek_problem4c.png", width = 800, height = 500)
 figure <- ggplot(est_compare, aes(x = Uncorrected, y = Corrected)) +
      geom_point(col = "darkgrey", alpha = .5, size = .5) + geom_abline(intercept = 0, slope = 1, col = "darkorange") + geom_smooth(method = "lm") + labs(title = "Guzek_problem4c")
+figure
 dev.off()
 figure
 ```
@@ -366,18 +367,19 @@ est_compare <- tibble(
 ```
 
 ```{r}
-ggplot(est_compare, aes(x=LinearModel, y=ComBat)) +
+png("Guzek_problem5a.png", width = 1500, height = 500)
+lmcb <- ggplot(est_compare, aes(x=LinearModel, y=ComBat)) +
      geom_point(col = "darkgrey", alpha = .5, size = .5) + geom_abline(intercept = 0, slope = 1, col="darkorange") + geom_smooth(method = "lm")
-```
 
-```{r}
-ggplot(est_compare, aes(x=LinearModel, y=SVA)) +
+lmsva <- ggplot(est_compare, aes(x=LinearModel, y=SVA)) +
      geom_point(col = "darkgrey", alpha = .5, size = .5) + geom_abline(intercept = 0, slope = 1, col="darkorange") + geom_smooth(method = "lm")
-```
 
-```{r}
-ggplot(est_compare, aes(x=ComBat, y=SVA)) +
+cbsva <- ggplot(est_compare, aes(x=ComBat, y=SVA)) +
      geom_point(col = "darkgrey", alpha = .5, size = .5) + geom_abline(intercept = 0, slope = 1, col="darkorange") + geom_smooth(method = "lm")
+figure <- ggarrange(lmcb, lmsva, cbsva, labels = c("Linear Model vs. ComBat", "Linear Model vs. SVA", "ComBat vs. SVA"), nrow = 1, ncol = 3) + labs(title = "Guzek_problem5a")
+annotate_figure(figure, top = text_grob("Guzek_problem5a"))
+dev.off()
+figure
 ```
 
 ```{r}
@@ -386,6 +388,8 @@ p_vals <- tibble(
   ComBat = tidy_mod_combat %>% filter(term == "as.factor(bottomly_metadata$strain)DBA/2J") %>% select("p.value") %>% unlist,
   SVA = tidy_mod_sva %>% filter(term == "as.factor(bottomly_metadata$strain)DBA/2J") %>% select("p.value") %>% unlist)
 
+#png("Guzek_problem5b.png", width = 1400, height = 500)
 p_vals.gather <- gather(p_vals)
 ggplot(p_vals.gather, aes(x = value)) + geom_histogram(fill = "darkorange") + facet_wrap(~key)
+#dev.off()
 ```
