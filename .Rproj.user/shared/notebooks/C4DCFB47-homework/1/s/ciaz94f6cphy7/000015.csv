@@ -1,1 +1,0 @@
-"0","plot(svd.out$d^2 / sum(svd.out$d^2) * 100, pch = 20, ylab = ""% variance explained"")"

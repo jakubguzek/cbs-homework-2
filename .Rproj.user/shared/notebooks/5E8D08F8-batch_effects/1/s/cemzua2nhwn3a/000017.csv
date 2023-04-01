@@ -1,3 +1,0 @@
-"0",""
-"0","edata <- edata[row.variances < 6,]"
-"0","edata.log <- log2(edata)"

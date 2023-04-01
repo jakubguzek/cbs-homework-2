@@ -1,3 +1,0 @@
-"0","pdf(""Guzek_problem3.pdf"", width = 16, height = 9)"
-"0","par(mfrow = c(1, 2))"
-"0","plot(svd.out$u[, 1], pch = 20)"

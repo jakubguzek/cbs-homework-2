@@ -1,8 +1,0 @@
-"0","# filter : choose ROWS "
-"0","# select : choose COLS"
-"0","est_compare <- tibble("
-"0","  LinearModel = mod_tidy %>% filter(term == ""as.factor(pheno$cancer)Cancer"") %>% select(""estimate"") %>% unlist,"
-"0","  ComBat = modcombat_tidy %>% filter(term == ""as.factor(pheno$cancer)Cancer"") %>% select(""estimate"") %>% unlist)"
-"0",""
-"0","ggplot(est_compare, aes(x=LinearModel, y=ComBat)) +"
-"0","     geom_point(col=""darkgrey"", alpha=.5, size=.5) + geom_abline(intercept=0, slope=1, col=""darkred"") + geom_smooth(method = ""lm"", se = TRUE)  + theme_bw()"

@@ -14,6 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r load, echo=FALSE, results="hide", warning=FALSE}
 suppressPackageStartupMessages({
 library(devtools)
+library(huxtable)
 library(ggplot2)
 library(ggpubr)
 library(gplots)
@@ -23,7 +24,6 @@ library(broom)
 library(tidyverse)
 library(data.table)
 library(RColorBrewer)
-library(huxtable)
 })
 ```
 
@@ -72,7 +72,11 @@ expression_data <- expression_data[row.variances < 5, ]
 expression_data <- log2(expression_data)
 row.variances <- apply(expression_data, 1, function(x) var(x))
 row.means <- apply(expression_data, 1, function(x) mean(x))
-ggplot(data.frame(row.means, row.variances), aes(x=row.means, y = row.variances)) + geom_point() + geom_smooth(method="lm", col = "lightcoral") + labs(title = "Mean vs. Variance relationship") 
+ggplot(data.frame(row.means, row.variances), 
+       aes(x=row.means, y = row.variances)) + 
+       geom_point() + 
+       geom_smooth(method="lm", col = "lightcoral") + 
+       labs(title = "Mean vs. Variance relationship") 
 ```
 
 ## Homework problem 1
@@ -81,7 +85,8 @@ Create the table
 
 ```{r, "Create batch table"}
 #batch.table <- unique(phenotypes$batch) %>% map_dfc(setNames, object = phenotypes$outcome)
-batch.table <- table(phenotypes$cancer, phenotypes$batch, dnn = c("Batch", "Outcome"))
+batch.table <- table(phenotypes$cancer, 
+                     phenotypes$batch, dnn = c("Batch", "Outcome"))
 batch.table <- as_huxtable(batch.table)
 caption(batch.table) <- "Number of certain outcome by batch number"
 bottom_border(batch.table)[1, 1:ncol(batch.table)] <- 0.5
@@ -99,7 +104,8 @@ Sort the data by batches
 ```{r, "Sort the data by batches"}
 # Clumsy way to sort somples by batches from which they come from
 ettiquetted_edf <- arrange(data.frame(phenotypes, t(expression_data)), batch)
-expression_data <- t(as.matrix(arrange(data.frame(t(expression_data)), phenotypes$batch)))
+expression_data <- t(as.matrix(arrange(data.frame(t(expression_data)), 
+                                       phenotypes$batch)))
 expression_data[1,]
 ```
 
@@ -183,7 +189,8 @@ heatmap.2(correlation.matrix,
 #dev.off()
 
 ettiquetted_edf = arrange(ettiquetted_edf, outcome)
-expression_data = t(as.matrix(arrange(data.frame(t(expression_data)), phenotypes$outcome)))
+expression_data = t(as.matrix(arrange(data.frame(t(expression_data)),
+                                      phenotypes$outcome)))
 
 correlation.matrix <- apply(expression_data, 2, cor, expression_data)
 rownames(correlation.matrix) <- colnames(correlation.matrix)
@@ -245,7 +252,8 @@ names(tidy_mod)
 png("Guzek_problem4a.png", width = 800, height = 700)
 coeff = ggplot(tidy_mod %>% filter(term == "as.factor(bottomly_metadata$strain)DBA/2J")) + geom_histogram(aes(x=estimate), bins = 100, fill = "darkorange")
 p_val = ggplot(tidy_mod %>% filter(term == "as.factor(bottomly_metadata$strain)DBA/2J")) + geom_histogram(aes(x=p.value), bins = 100, fill="darkorange")
-figure <- ggarrange(coeff, p_val, labels = c("Histogram of coefficients of uncorrected data", "Histogram of p-values of uncorrected data"), ncol = 1, nrow = 2) + labs(title = "Guzek_problem4a")
+figure <- ggarrange(coeff, p_val, labels = c("Histogram of coefficients of uncorrected data", "Histogram of p-values of uncorrected data"), ncol = 1, nrow = 2) +
+  labs(title = "Guzek_problem4a")
 annotate_figure(figure, top = text_grob("Guzek_problem4a"))
 dev.off()
 figure
@@ -274,7 +282,8 @@ names(tidy_mod_combat)
 png("Guzek_problem4b.png", width = 800, height = 700)
 coeff = ggplot(tidy_mod_combat %>% filter(term == "as.factor(bottomly_metadata$strain)DBA/2J")) + geom_histogram(aes(x=estimate), bins = 100, fill = "darkorange")
 p_val = ggplot(tidy_mod_combat %>% filter(term == "as.factor(bottomly_metadata$strain)DBA/2J")) + geom_histogram(aes(x=p.value), bins = 100, fill="darkorange")
-figure <- ggarrange(coeff, p_val, labels = c("Histogram of coeffecients of corrected data", "Histogram of p-values of corrected data"), ncol = 1, nrow = 2) + labs(title = "Guzek_problem4b")
+figure <- ggarrange(coeff, p_val, labels = c("Histogram of coeffecients of corrected data", "Histogram of p-values of corrected data"), ncol = 1, nrow = 2) +
+  labs(title = "Guzek_problem4b")
 annotate_figure(figure, top = text_grob("Guzek_problem4b"))
 dev.off()
 figure
@@ -289,7 +298,9 @@ est_compare <- tibble(
 
 png("Guzek_problem4c.png", width = 800, height = 500)
 figure <- ggplot(est_compare, aes(x = Uncorrected, y = Corrected)) +
-     geom_point(col = "darkgrey", alpha = .5, size = .5) + geom_abline(intercept = 0, slope = 1, col = "darkorange") + geom_smooth(method = "lm") + labs(title = "Guzek_problem4c")
+     geom_point(col = "darkgrey", alpha = .5, size = .5) + 
+  geom_abline(intercept = 0, slope = 1, col = "darkorange") + 
+  geom_smooth(method = "lm") + labs(title = "Guzek_problem4c")
 figure
 dev.off()
 figure
@@ -304,7 +315,8 @@ mod = model.matrix(~as.factor(strain), data = bottomly_metadata)
 mod0 = model.matrix(~1, data = bottomly_metadata)
 num.sv(bottomly_edata, mod, method = "be")
 num.sv(bottomly_edata, mod, method = "leek")
-sva.output <- sva(bottomly_edata, mod, mod0, n.sv=num.sv(bottomly_edata, mod, method = "leek"))
+sva.output <- sva(bottomly_edata, mod, mod0,
+                  n.sv=num.sv(bottomly_edata, mod, method = "leek"))
 ```
 
 Take a look at the data
@@ -351,13 +363,16 @@ sva.batch <- tibble(SV1 = sva.output$sv[,1],
                     batch = as.factor(bottomly_metadata$experiment.number))
 sva.batch.gather <- gather(sva.batch, "sv", "value", -batch)
 
-ggplot(sva.batch.gather) + geom_violin(aes(x = batch, y = value)) + facet_wrap(~sv, ncol = 1) + geom_jitter(aes(x = batch, y = value, col = batch))
+ggplot(sva.batch.gather) + geom_violin(aes(x = batch, y = value)) + 
+  facet_wrap(~sv, ncol = 1) +
+  geom_jitter(aes(x = batch, y = value, col = batch))
 ```
 
 
 ```{r, "tidy the sva on bottomly data"}
 # Add the surrogate variables to the model matrix
-mod_sva = lm(t(bottomly_edata) ~ as.factor(bottomly_metadata$strain) + sva.output$sv)
+mod_sva = lm(t(bottomly_edata) ~ as.factor(bottomly_metadata$strain) + 
+               sva.output$sv)
 tidy_mod_sva <- tidy(mod_sva)
 ```
 
@@ -371,14 +386,22 @@ est_compare <- tibble(
 ```{r, "visualize the comparison"}
 png("Guzek_problem5a.png", width = 1500, height = 500)
 lmcb <- ggplot(est_compare, aes(x=LinearModel, y=ComBat)) +
-     geom_point(col = "darkgrey", alpha = .5, size = .5) + geom_abline(intercept = 0, slope = 1, col="darkorange") + geom_smooth(method = "lm")
+     geom_point(col = "darkgrey", alpha = .5, size = .5) + 
+  geom_abline(intercept = 0, slope = 1, col="darkorange") +
+  geom_smooth(method = "lm")
 
 lmsva <- ggplot(est_compare, aes(x=LinearModel, y=SVA)) +
-     geom_point(col = "darkgrey", alpha = .5, size = .5) + geom_abline(intercept = 0, slope = 1, col="darkorange") + geom_smooth(method = "lm")
+     geom_point(col = "darkgrey", alpha = .5, size = .5) + 
+  geom_abline(intercept = 0, slope = 1, col="darkorange") + 
+  geom_smooth(method = "lm")
 
 cbsva <- ggplot(est_compare, aes(x=ComBat, y=SVA)) +
-     geom_point(col = "darkgrey", alpha = .5, size = .5) + geom_abline(intercept = 0, slope = 1, col="darkorange") + geom_smooth(method = "lm")
-figure <- ggarrange(lmcb, lmsva, cbsva, labels = c("Linear Model vs. ComBat", "Linear Model vs. SVA", "ComBat vs. SVA"), nrow = 1, ncol = 3) + labs(title = "Guzek_problem5a")
+     geom_point(col = "darkgrey", alpha = .5, size = .5) + 
+  geom_abline(intercept = 0, slope = 1, col="darkorange") +
+  geom_smooth(method = "lm")
+figure <- ggarrange(lmcb, lmsva, cbsva, 
+  labels = c("Linear Model vs. ComBat", "Linear Model vs. SVA", "ComBat vs. SVA"),
+  nrow = 1, ncol = 3) + labs(title = "Guzek_problem5a")
 annotate_figure(figure, top = text_grob("Guzek_problem5a"))
 dev.off()
 figure
@@ -392,6 +415,7 @@ p_vals <- tibble(
 
 #png("Guzek_problem5b.png", width = 1400, height = 500)
 p_vals.gather <- gather(p_vals)
-ggplot(p_vals.gather, aes(x = value)) + geom_histogram(fill = "darkorange") + facet_wrap(~key)
+ggplot(p_vals.gather, aes(x = value)) + geom_histogram(fill = "darkorange") +
+  facet_wrap(~key)
 #dev.off()
 ```

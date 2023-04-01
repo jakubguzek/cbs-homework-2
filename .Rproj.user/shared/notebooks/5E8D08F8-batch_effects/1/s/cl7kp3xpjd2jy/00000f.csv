@@ -1,4 +1,0 @@
-"0","svd.out.combat <- svd(combat_edata)"
-"0","svd.combat.plot <- data.table(svd.out.combat$v[,1:10], pheno)"
-"0",""
-"0","ggplot(svd.combat.plot) + geom_point(aes(x=V1, y=V2, col=as.factor(batch)))"
